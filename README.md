@@ -221,3 +221,10 @@ This repository is licensed under the MIT License - see the [LICENSE](LICENSE) f
 For discussions, suggestions, and more, feel free to [create an issue](https://github.com/patchy631/ai-engineering/issues) or reach out directly!
 
 **Happy Coding!** 🎉
+
+
+---
+
+## 📚 Independent Textbook Companions
+
+See the [AI Engineering Hub textbook curriculum](./textbooks/README.md) for a 117-lesson study catalog, fork comparison, source attribution, and instructions to import the independently authored Markdown/PDF bundle. These books are learning supplements, not validated replacements for the project examples.
