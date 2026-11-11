@@ -8,7 +8,9 @@ import zipfile
 PREFIX = "AI_Engineering_Hub_Textbooks/"
 ALLOW = {".md", ".csv", ".json", ".pdf"}
 
-def import_bundle(bundle: pathlib.Path, dest: pathlib.Path, source_only: bool = False):
+def import_bundle(bundle: pathlib.Path, dest: pathlib.Path, source_only: bool = False, pdf_only: bool = False):
+    if source_only and pdf_only:
+        raise ValueError("Select only one of --source-only and --pdf-only")
     written = []
     with zipfile.ZipFile(bundle) as zf:
         bad = zf.testzip()
@@ -28,6 +30,8 @@ def import_bundle(bundle: pathlib.Path, dest: pathlib.Path, source_only: bool = 
                 raise ValueError(f"Unsafe or unsupported entry: {info.filename}")
             if source_only and rel.suffix.lower() == ".pdf":
                 continue
+            if pdf_only and rel.suffix.lower() != ".pdf":
+                continue
             targets.append((info, dest.joinpath(*rel.parts)))
         for info, target in targets:
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -39,9 +43,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("bundle", type=pathlib.Path)
     parser.add_argument("--source-only", action="store_true", help="Import editable Markdown and metadata; omit PDF binaries")
+    parser.add_argument("--pdf-only", action="store_true", help="Import PDFs without overwriting tracked source Markdown")
     args = parser.parse_args()
     target = pathlib.Path(__file__).resolve().parent
-    files = import_bundle(args.bundle, target, args.source_only)
+    files = import_bundle(args.bundle, target, args.source_only, args.pdf_only)
     print(f"Imported {len(files)} files into {target}")
 if __name__ == "__main__":
     main()
