@@ -227,4 +227,4 @@ For discussions, suggestions, and more, feel free to [create an issue](https://g
 
 ## 📚 Independent Textbook Companions
 
-See the [AI Engineering Hub textbook curriculum](./textbooks/README.md) for a 117-lesson study catalog, fork comparison, source attribution, and instructions to import the independently authored Markdown/PDF bundle. These books are learning supplements, not validated replacements for the project examples.
+See the [AI Engineering Hub textbook curriculum](./textbooks/README.md) for a 117-lesson study catalog, fork comparison, source attribution, and 117 independently authored Markdown textbooks, provenance notes, and instructions to import the separate PDF bundle. These books are learning supplements, not validated replacements for the project examples.
